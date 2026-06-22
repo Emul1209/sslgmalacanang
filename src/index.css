@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --color-sslg-maroon: #7a1515;
+    --color-sslg-maroon-hover: #5c0f0f;
+    --color-sslg-green: #134e29;
+    --color-sslg-green-hover: #0b3319;
+    --color-sslg-gold: #f4c430;
+}
