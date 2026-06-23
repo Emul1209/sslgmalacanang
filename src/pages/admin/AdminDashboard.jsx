@@ -154,7 +154,7 @@ export default function AdminDashboard() {
             No complaints have been reported to the system yet.
             </div>
         ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {complaints.map((item) => (
                 <div key={item.id} className="bg-white border border-slate-200 rounded-xl shadow-xs overflow-hidden flex flex-col justify-between hover:border-slate-300 transition-colors">
                 <div className="p-5">
@@ -174,20 +174,26 @@ export default function AdminDashboard() {
                     >
                         ● {item.status || 'Pending'}
                     </button>
-                    <button onClick={() => handleDelete(item.id)} className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-200">
-                        🗑️ Delete
-                    </button>
+                    
                     </div>
-
                     <h3 className="font-bold text-slate-900 text-lg line-clamp-1">{item.title}</h3>
-                    <p className="text-slate-600 text-sm mt-2 line-clamp-4 whitespace-pre-line bg-slate-50 p-3 rounded-lg border border-slate-100">
-                    "{item.description}"
-                    </p>
+                    <div className="flex flex-col gap-1">
+                        <label className="text-xs font-semibold text-slate-500">Complaint Description:</label>
+                        <textarea
+                            readOnly
+                            value={item.description}
+                            className="w-full h-24 min-h-[60px] p-2 border border-slate-200 rounded-lg bg-slate-50 text-sm text-slate-800 resize-y focus:outline-none no-scrollbar overflow-auto"
+                        />
+                    </div>
                 </div>
 
                 <div className="bg-slate-50 px-5 py-3 border-t border-slate-100 flex justify-between items-center text-xs font-medium text-slate-500">
                     <span>{item.isAnonymous ? '🕵️ Anonymous Student' : item.name }</span>
+                    <button onClick={() => handleDelete(item.id)} className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-200">
+                        🗑️
+                    </button>
                 </div>
+                
                 </div>
             ))}
             </div>

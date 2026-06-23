@@ -44,9 +44,11 @@ export default function SubmitComplaint() {
             setLoading(false);
             return setError('Please describe your concern.');
         }
-        if (!formData.studentName && !formData.isAnonymous) {
+        if (!formData.isAnonymous && !studentName.trim()) {
             setLoading(false);
+            setStudentName("");
             return setError("Please enter your name!")
+            
         }
         
 
@@ -78,7 +80,8 @@ export default function SubmitComplaint() {
                 <button 
                     type="button"
                     className="mt-6 px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium hover:bg-slate-50 cursor-pointer" 
-                    onClick={() => { setSuccess(false); setFormData({ category: '', title: '', description: '', isAnonymous: false }); }}
+                    onClick={() => { setSuccess(false); setFormData({ category: '', title: '', description: '', isAnonymous: false }); setStudentName('') }}
+                    
                 >
                     Submit Another Concern
                 </button>
@@ -162,7 +165,6 @@ export default function SubmitComplaint() {
                         type="checkbox"
                         id="isAnonymous"
                         disabled={loading}
-                        checked={isAnonymous}
                         checked={formData.isAnonymous}
                         onChange={handleCheckboxChange}
                         className="w-4 h-4 border-slate-300 rounded-xs"

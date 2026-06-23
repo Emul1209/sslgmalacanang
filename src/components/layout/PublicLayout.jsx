@@ -22,12 +22,6 @@ export default function PublicLayout() {
                 Submit a Complaint
                 </Link>
 
-                <Link 
-                to="/admin/dashboard" 
-                className="text-white text-sm font-medium hover:underline px-2 py-1"
-                >
-                Admin Dashboard
-                </Link>
             </div>
 
             </div>

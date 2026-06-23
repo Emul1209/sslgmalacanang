@@ -43,26 +43,6 @@ export default function Home() {
             </span>
             </Link>
 
-            {/* Card 2: View Dashboard */}
-            <Link 
-            to="/admin/dashboard" 
-            className="group relative bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-300 hover:shadow-md transition-all duration-300 text-left flex flex-col justify-between"
-            >
-            <div>
-                <div className="w-12 h-12 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center text-xl font-bold group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300">
-                📊
-                </div>
-                <h3 className="text-lg font-bold text-slate-900 mt-4 group-hover:text-slate-800 transition-colors">
-                SSLG Command Central
-                </h3>
-                <p className="text-sm text-slate-500 mt-1 leading-relaxed">
-                Administrative backend monitoring panel to track, assign, and resolve student cases live.
-                </p>
-            </div>
-            <span className="text-xs font-bold text-slate-700 mt-6 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                Access Dashboard →
-            </span>
-            </Link>
 
             <Link 
             to="/transparency" 
