@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/firebaseConfig';
-import { collection, onSnapshot, updateDoc, doc, query } from 'firebase/firestore';
+import { collection, onSnapshot, updateDoc, doc, query, deleteDoc } from 'firebase/firestore';
 
 export default function AdminDashboard() {
   // Security States
@@ -25,6 +25,20 @@ export default function AdminDashboard() {
         setLoginError('Invalid Administrator Password. Access Denied.');
         }
     };
+
+    const handleDelete = async (id) => {
+        if (window.confirm("Are you sure you want to delete this complaint?")) {
+            try{
+                const docRef = doc(db, "complaints", id);
+                await deleteDoc(docRef);
+                alert("Complaint deleted!")
+            } catch(error){
+                console.error("Error! Can't delete this complaint!");
+                alert("Please try again.")
+
+            }
+        }
+    }
 
     // Live Firebase Syncing
     useEffect(() => {
@@ -159,6 +173,9 @@ export default function AdminDashboard() {
                         }`}
                     >
                         ● {item.status || 'Pending'}
+                    </button>
+                    <button onClick={() => handleDelete(item.id)} className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-200">
+                        🗑️ Delete
                     </button>
                     </div>
 

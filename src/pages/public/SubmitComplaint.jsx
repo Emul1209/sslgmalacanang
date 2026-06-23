@@ -44,6 +44,11 @@ export default function SubmitComplaint() {
             setLoading(false);
             return setError('Please describe your concern.');
         }
+        if (!formData.studentName && !formData.isAnonymous) {
+            setLoading(false);
+            return setError("Please enter your name!")
+        }
+        
 
         try {
             await addDoc(collection(db, 'complaints'), {
